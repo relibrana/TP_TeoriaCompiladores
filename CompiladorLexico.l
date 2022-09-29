@@ -1,7 +1,6 @@
 %{
     #include <stdio.h>
     #include <stdlib.h>
-    #include <conio.h>
     #include <string.h>
     FILE *yyin;
 %}
@@ -13,32 +12,34 @@ DIGIT           [0-9]
 CHAR_LETTER     [a-zA-Z]
 INIT_COMMENT    ["/*"]
 END_COMMENT     ["*/"]
+COMMENT         [//]
 DASH            [-_]
 CHAR_COMMA      [","]
 CHAR_POINT      ["."]
-CHAR_SEMICOLON  [";"]
 CHAR_COLON      [":"]
-L_SHIFT         ["<"]
-R_SHIFT         [">"]
+L_SHIFT         "<<"
+R_SHIFT         ">>"
 
-ID            {CHAR_LETTER}({CHAR_LETTER}|{DIGIT}|{DASH})*
 CONST_INT     (-?[1-9]{0,4})|0
 CONST_FLOAT   {DIGIT}{0,8}{CHAR_POINT}{DIGIT}{1,8}
 STRING  \"[^\n"]*\"
 
+OP_PLUS1    "++"
 OP_SUM     ["+"]
-OP_SUB     ["-"]
+OP_SUB     "-"
 OP_MULT    ["*"]
 OP_DIV     ["/"]
 OP_EQ      ["="]
-OP_HIGH    [">"]
-OP_LOW     ["<"]
+OP_HIGH    ">"
+OP_LOW     "<"
 OP_HIGHEQ  ">="
 OP_LOWEQ   ">="
 OP_COMP_EQ "=="
 OP_DENIAL  "!"
 OP_DIF     "!="
-OP_COLON   [":"]
+OP_RES     ["%"]
+OP_AND     "&&"
+OP_OR      "||"
 
 BRACKET_OPEN    ["{"]
 BRACKET_CLOSE   ["}"]
@@ -46,29 +47,26 @@ PARENTHESIS_O   ["("]
 PARENTHESIS_C   [")"]
 END_SENTENCE    [";"]
 
+
+COUT        "cout"
 IF          "if"|"IF"
 WHILE       "while"|"WHILE"
-INTEGER     "INTEGER"|"Integer"
-FLOAT       "Float"|"FLOAT"
-COUT        "cout"
+INTEGER     "int"
+FLOAT       "float"
 END_LINE    "endl"
 RETURN      "return"
+LIBRARY     #[a-zA-Z]+\s<[a-zA-Z]+>
+USING       "using"
+NAMESPACE   "namespace"
 
-
+ID            {CHAR_LETTER}({CHAR_LETTER}|{DIGIT}|{DASH})*
 
 %%
 
-{OP_COLON}          {printf("\nOP_COLON (%s)",yytext);}
 {END_SENTENCE}        {printf("\nEND_SENTENCE(%s)",yytext);}
+{LIBRARY}           {printf("\nEsto es una libreria (%s)",yytext);}
 
-{CHAR_COMMA}        {printf("\nCHAR_COMMA (%s)",yytext);}
-{CHAR_SEMICOLON}    {printf("\nCHAR_SEMICOLON (%s)",yytext);}
-{CONST_INT}         {fn_rangeVerify(yytext);printf("\nCONST_INT (%s)",yytext);}
-{CONST_FLOAT}       {printf("\nCONST_FLOAT(%s)",yytext);}
-{STRING}            {printf("\nSTRING (%s)",yytext);}
-{L_SHIFT}           {printf("\nL_SHIFT (%s)",yytext);}
-{R_SHIFT}           {printf("\nR_SHIFT (%s)",yytext);}
-
+{OP_PLUS1}          {printf("\nOP_PLUS1 (%s)",yytext);}
 {OP_SUM}            {printf("\nOP_SUM (%s)",yytext);}
 {OP_SUB}            {printf("\nOP_SUB (%s)",yytext);}
 {OP_MULT}           {printf("\nOP_MULT (%s)",yytext);}
@@ -81,27 +79,42 @@ RETURN      "return"
 {OP_COMP_EQ}        {printf("\nOP_COMP_EQ (%s)",yytext);}
 {OP_DENIAL}         {printf("\nOP_DENIAL (%s)",yytext);}
 {OP_DIF}            {printf("\nOP_DIF (%s)",yytext);}
-{OP_COLON}          {printf("\nOP_COLON (%s)",yytext);}
+{OP_RES}            {printf("\nOP_RES (%s)",yytext);}
+{OP_AND}            {printf("\nOP_AND (%s)",yytext);}
+{OP_OR}             {printf("\nOP_OR (%s)",yytext);}
+
+
+{CHAR_COMMA}        {printf("\nCHAR_COMMA (%s)",yytext);}
+{CONST_INT}         {fn_rangeVerify(yytext);printf("\nCONST_INT (%s)",yytext);}
+{CONST_FLOAT}       {printf("\nCONST_FLOAT(%s)",yytext);}
+{STRING}            {printf("\nSTRING (%s)",yytext);}
+{L_SHIFT}           {printf("\nL_SHIFT (%s)",yytext);}
+{R_SHIFT}           {printf("\nR_SHIFT (%s)",yytext);}
+
+
 
 {BRACKET_OPEN}      {printf("\nBRACKET_OPEN (%s)",yytext);}
 {BRACKET_CLOSE}     {printf("\nBRACKET_CLOSE (%s)",yytext);}
 {PARENTHESIS_O}     {printf("\nPARENTHESIS_O (%s)",yytext);}
 {PARENTHESIS_C}     {printf("\nPARENTHESIS_C (%s)",yytext);}
 
+
+{USING}             {printf("\nPalabra Reservada USING (%s)",yytext);}
+{NAMESPACE}         {printf("\nPalabra Reservada NAMESPACE (%s)",yytext);}
+{COUT}              {printf("\nPalabra Reservada COUT (%s)",yytext);}
 {IF}                {printf("\nPalabra Reservada IF (%s)",yytext);}
 {WHILE}             {printf("\nPalabra Reservada WHILE (%s)",yytext);}
 {INTEGER}           {printf("\nPalabra Reservada INTEGER (%s)",yytext);}
 {FLOAT}             {printf("\nPalabra Reservada FLOAT (%s)",yytext);}
-{COUT}             {printf("\nPalabra Reservada COUT (%s)",yytext);}
 {END_LINE}          {printf("\nPalabra Reservada END_LINE (%s)",yytext);}
-{RETURN}          {printf("\nPalabra Reservada RETURN (%s)",yytext);}
+{RETURN}            {printf("\nPalabra Reservada RETURN (%s)",yytext);}
+
+
 
 {ID}                {printf("\nID (%s)",yytext);}
 
-"\n"
-"\t"
-" "
-.       yyerror();
+[ \n\r\t]           {}
+.                   {printf("\nNo se puede leer");}
 %%
 
 int main(int argc,char *argv[]){
@@ -120,15 +133,12 @@ int fn_rangeVerify(char*ptr){
     int value = atoi(ptr);
     if(value<-32768 || value > 32767){
         printf("Error fuera de rango",yytext);
-        return yyerror();
+        return -1;
     }
     return 0;
 }
 
-int yyerror(void){
-    printf("\nCaracter invalido> %s",yytext);
-    exit(1);
-}
+
 
 
 

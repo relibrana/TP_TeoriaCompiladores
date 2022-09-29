@@ -34,7 +34,7 @@ A continuación se van a presentar los tokens utilizados. Cabe resaltar que este
 | new       | _new_              |
 | namespace | _namespace_        |
 # 3. Implementar el analizador léxico usando Flex
-[a relative link](CompiladorLexico.l)
+[Link al archivo](CompiladorLexico.l)
 # 4. Describir la gramática libre de contexto del lenguaje seleccionado.
 # 5. Implementar el analizador sintáctico
 # 6. Proporcionar por lo menos 10 ejemplos de programas válidos 
