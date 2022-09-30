@@ -1,15 +1,15 @@
 # TP_TeoriaCompiladores
-# 1. Describir el lenguaje de programación a utilizar, en caso de ser un lenguaje comercial, describir el alcance del mismo, es decir el subconjunto
+## 1. Describir el lenguaje de programación a utilizar, en caso de ser un lenguaje comercial, describir el alcance del mismo, es decir el subconjunto
 El lenguaje de programación que se va a utilizar en el presente trabajo es C++. 
 
-# 2. Describir los tokens y ejemplos de lexemas
+## 2. Describir los tokens y ejemplos de lexemas
 A continuación se van a presentar los tokens utilizados en el Analizador Léxico. Cabe resaltar que este sirve para analizar programas de nivel tipo principiante (Programación 1).
-## Identificador
-| token     | descripción                                           | lexema      |
-|-----------|-------------------------------------------------------|-------------|
-| ID        | Una letra seguida de una letra, un número o un guión  | _cout_      |
+### Identificador
+| token     | descripción                                           | lexema        |
+|-----------|-------------------------------------------------------|---------------|
+| ID        | Una letra seguida de una letra, un número o un guión  | a, cont, aux_ |
 
-## Palabras reservadas y parte de alguna librería o clase
+### Palabras reservadas y parte de alguna librería o clase
 | token     | descripción                                        | lexema      |
 |-----------|----------------------------------------------------|-------------|
 | COUT      | Caracteres 'c','o','u','t'                         | _cout_      |
@@ -30,15 +30,17 @@ A continuación se van a presentar los tokens utilizados en el Analizador Léxic
 | NEW       | Caracteres 'n','e','w'                             | _new_       |
 | SHORT     | Caracteres 's','h','o','r',t'                      | _short_     |
 | VOID      | Caracteres 'v','o','i','d'                         | _void_      |
+| SWITCH    | Caracteres 's','w','i','t',c','h'                  | _switch_    |
+| CASE      | Caracteres 'c','a','s','e'                         | _case_      |
 
-## Tipos de variables
+### Tipos de variables
 | token      | descripción                                      | lexema                        |
 |------------|--------------------------------------------------|-------------------------------|
 | CONST_INT  | Número entero entre -2147483648 y 2147483647     | 123456, 3, 654                |
 | CONST_FLOAT| Número decimal entre -2147483648 y 2147483647    | 5.4, 456.45, 54.67            |
 | STRING     | Cadena de caracteres (letras o números)          | "hola", "mundo", "hola mundo" |
 
-## Operadores
+### Operadores
 | token      | lexema |
 |------------|--------|
 | OP_PLUS1   | ++     |
@@ -58,7 +60,7 @@ A continuación se van a presentar los tokens utilizados en el Analizador Léxic
 | OP_AND     | &&     |
 | OP_OR      | ||     |
 
-## Ordenar código
+### Ordenar código
 | token          | lexema |
 |----------------|--------|
 | BRACKET_OPEN   | {      |
@@ -67,16 +69,26 @@ A continuación se van a presentar los tokens utilizados en el Analizador Léxic
 | PARENTHESIS_C  | )      |
 | END_SENTENCE   | ;      |
 
-## Librerias
+### Librerias
 | token     | descripción                | lexema                              |
 |-----------|----------------------------|-------------------------------------|
 | LIBRARY   | Librerias incluidas en C++ | <iostream>, <math.h>, <conio.h>     |
 
-# 3. Implementar el analizador léxico usando Flex
-[Link al archivo](AnalizadorLexico.l)
+## 3. Implementar el analizador léxico usando Flex
+[Analizador Lexico](AnalizadorLexico.l)
 
-# 4. Describir la gramática libre de contexto del lenguaje seleccionado.
+## 4. Describir la gramática libre de contexto del lenguaje seleccionado.
 
-# 5. Implementar el analizador sintáctico
+## 5. Implementar el analizador sintáctico
 
-# 6. Proporcionar por lo menos 10 ejemplos de programas válidos 
+## 6. Proporcionar por lo menos 10 ejemplos de programas válidos 
+[Ejemplo 1](prueba1.cpp)
+[Ejemplo 2](prueba2.cpp)
+[Ejemplo 3](prueba3.cpp)
+[Ejemplo 4](prueba4.cpp)
+[Ejemplo 5](prueba5.cpp)
+[Ejemplo 6](prueba6.cpp)
+[Ejemplo 7](prueba7.cpp)
+[Ejemplo 8](prueba8.cpp)
+[Ejemplo 9](prueba9.cpp)
+[Ejemplo 10](prueba10.cpp)

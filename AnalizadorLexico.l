@@ -40,7 +40,7 @@ OP_DIF      "!="
 OP_RES      "%"
 OP_AND      "&&"
 OP_OR       "||"
-POINTER     (*{ID})
+
 
 BRACKET_OPEN    ["{"]
 BRACKET_CLOSE   ["}"]
@@ -69,6 +69,9 @@ NEW         "new"
 SHORT       "short"
 STRUCT      "struct"
 VOID        "void"
+SWITCH      "switch"
+CASE        "case"
+BREAK       "break"
 
 ID            {CHAR_LETTER}({CHAR_LETTER}|{DIGIT}|{DASH})*
 
@@ -94,7 +97,6 @@ ID            {CHAR_LETTER}({CHAR_LETTER}|{DIGIT}|{DASH})*
 {OP_RES}            {printf("\nOP_RES (%s)",yytext);}
 {OP_AND}            {printf("\nOP_AND (%s)",yytext);}
 {OP_OR}             {printf("\nOP_OR (%s)",yytext);}
-{POINTER}           {printf("\nPOINTER (%s)",yytext);}
 
 
 {CHAR_COMMA}        {printf("\nCHAR_COMMA (%s)",yytext);}
@@ -130,6 +132,9 @@ ID            {CHAR_LETTER}({CHAR_LETTER}|{DIGIT}|{DASH})*
 {SHORT}             {printf("\nPalabra Reservada SHORT (%s)",yytext);}
 {STRUCT}            {printf("\nPalabra Reservada STRUCT (%s)",yytext);}
 {VOID}              {printf("\nPalabra Reservada VOID (%s)",yytext);}
+{SWITCH}            {printf("\nPalabra Reservada SWITCH (%s)",yytext);}
+{CASE}              {printf("\nPalabra Reservada CASE (%s)",yytext);}
+{BREAK}             {printf("\nPalabra Reservada BREAK (%s)",yytext);}
 
 
 {ID}                {printf("\nID (%s)",yytext);}
