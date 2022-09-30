@@ -12,7 +12,7 @@ DIGIT           [0-9]
 CHAR_LETTER     [a-zA-Z]
 INIT_COMMENT    ["/*"]
 END_COMMENT     ["*/"]
-COMMENT         [//]
+COMMENT         ["//"]
 DASH            [-_]
 CHAR_COMMA      [","]
 CHAR_POINT      ["."]
@@ -25,39 +25,50 @@ CONST_FLOAT   {DIGIT}{0,8}{CHAR_POINT}{DIGIT}{1,8}
 STRING  \"[^\n"]*\"
 
 OP_PLUS1    "++"
-OP_SUM     ["+"]
-OP_SUB     "-"
-OP_MULT    ["*"]
-OP_DIV     ["/"]
-OP_EQ      ["="]
-OP_HIGH    ">"
-OP_LOW     "<"
-OP_HIGHEQ  ">="
-OP_LOWEQ   ">="
-OP_COMP_EQ "=="
-OP_DENIAL  "!"
-OP_DIF     "!="
-OP_RES     ["%"]
-OP_AND     "&&"
-OP_OR      "||"
+OP_SUM      "+"
+OP_SUB      "-"
+OP_MULT     "*"
+OP_DIV      "/"
+OP_EQ       "="
+OP_HIGH     ">"
+OP_LOW      "<"
+OP_HIGHEQ   ">="
+OP_LOWEQ    ">="
+OP_COMP_EQ  "=="
+OP_DENIAL   "!"
+OP_DIF      "!="
+OP_RES      "%"
+OP_AND      "&&"
+OP_OR       "||"
+POINTER     (*{ID})
 
 BRACKET_OPEN    ["{"]
 BRACKET_CLOSE   ["}"]
 PARENTHESIS_O   ["("]
 PARENTHESIS_C   [")"]
 END_SENTENCE    [";"]
+LIBRARY         (<{CHAR_LETTER}+({CHAR_POINT}|{CHAR_LETTER}+){CHAR_LETTER}+>)
 
 
 COUT        "cout"
-IF          "if"|"IF"
-WHILE       "while"|"WHILE"
+IF          "if"
+WHILE       "while"
 INTEGER     "int"
 FLOAT       "float"
 END_LINE    "endl"
 RETURN      "return"
-LIBRARY     #[a-zA-Z]+\s<[a-zA-Z]+>
 USING       "using"
 NAMESPACE   "namespace"
+PPACCESS    "#include"
+BOOL        "bool"
+CHAR        "char"
+DO          "do"
+ELSE        "else"
+FOR         "for"
+NEW         "new"
+SHORT       "short"
+STRUCT      "struct"
+VOID        "void"
 
 ID            {CHAR_LETTER}({CHAR_LETTER}|{DIGIT}|{DASH})*
 
@@ -65,6 +76,7 @@ ID            {CHAR_LETTER}({CHAR_LETTER}|{DIGIT}|{DASH})*
 
 {END_SENTENCE}        {printf("\nEND_SENTENCE(%s)",yytext);}
 {LIBRARY}           {printf("\nEsto es una libreria (%s)",yytext);}
+{PPACCESS}          {printf("\nINCLUDE (%s)",yytext);}
 
 {OP_PLUS1}          {printf("\nOP_PLUS1 (%s)",yytext);}
 {OP_SUM}            {printf("\nOP_SUM (%s)",yytext);}
@@ -82,10 +94,11 @@ ID            {CHAR_LETTER}({CHAR_LETTER}|{DIGIT}|{DASH})*
 {OP_RES}            {printf("\nOP_RES (%s)",yytext);}
 {OP_AND}            {printf("\nOP_AND (%s)",yytext);}
 {OP_OR}             {printf("\nOP_OR (%s)",yytext);}
+{POINTER}           {printf("\nPOINTER (%s)",yytext);}
 
 
 {CHAR_COMMA}        {printf("\nCHAR_COMMA (%s)",yytext);}
-{CONST_INT}         {fn_rangeVerify(yytext);printf("\nCONST_INT (%s)",yytext);}
+{CONST_INT}         {printf("\nCONST_INT (%s)",yytext);}
 {CONST_FLOAT}       {printf("\nCONST_FLOAT(%s)",yytext);}
 {STRING}            {printf("\nSTRING (%s)",yytext);}
 {L_SHIFT}           {printf("\nL_SHIFT (%s)",yytext);}
@@ -108,7 +121,15 @@ ID            {CHAR_LETTER}({CHAR_LETTER}|{DIGIT}|{DASH})*
 {FLOAT}             {printf("\nPalabra Reservada FLOAT (%s)",yytext);}
 {END_LINE}          {printf("\nPalabra Reservada END_LINE (%s)",yytext);}
 {RETURN}            {printf("\nPalabra Reservada RETURN (%s)",yytext);}
-
+{BOOL}              {printf("\nPalabra Reservada BOOL (%s)",yytext);}
+{CHAR}              {printf("\nPalabra Reservada CHAR (%s)",yytext);}
+{DO}                {printf("\nPalabra Reservada DO (%s)",yytext);}
+{ELSE}              {printf("\nPalabra Reservada ELSE (%s)",yytext);}
+{FOR}               {printf("\nPalabra Reservada FOR (%s)",yytext);}
+{NEW}               {printf("\nPalabra Reservada NEW (%s)",yytext);}
+{SHORT}             {printf("\nPalabra Reservada SHORT (%s)",yytext);}
+{STRUCT}            {printf("\nPalabra Reservada STRUCT (%s)",yytext);}
+{VOID}              {printf("\nPalabra Reservada VOID (%s)",yytext);}
 
 
 {ID}                {printf("\nID (%s)",yytext);}
@@ -129,14 +150,7 @@ int main(int argc,char *argv[]){
     return 0;
 }
 
-int fn_rangeVerify(char*ptr){
-    int value = atoi(ptr);
-    if(value<-32768 || value > 32767){
-        printf("Error fuera de rango",yytext);
-        return -1;
-    }
-    return 0;
-}
+
 
 
 
