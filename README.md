@@ -82,13 +82,13 @@ A continuación se van a presentar los tokens utilizados en el Analizador Léxic
 ## 5. Implementar el analizador sintáctico
 
 ## 6. Proporcionar por lo menos 10 ejemplos de programas válidos 
-[Ejemplo 1](prueba1.cpp)
-[Ejemplo 2](prueba2.cpp)
-[Ejemplo 3](prueba3.cpp)
-[Ejemplo 4](prueba4.cpp)
-[Ejemplo 5](prueba5.cpp)
-[Ejemplo 6](prueba6.cpp)
-[Ejemplo 7](prueba7.cpp)
-[Ejemplo 8](prueba8.cpp)
-[Ejemplo 9](prueba9.cpp)
-[Ejemplo 10](prueba10.cpp)
+- [Ejemplo 1](prueba1.cpp)  
+- [Ejemplo 2](prueba2.cpp)  
+- [Ejemplo 3](prueba3.cpp)  
+- [Ejemplo 4](prueba4.cpp)  
+- [Ejemplo 5](prueba5.cpp)  
+- [Ejemplo 6](prueba6.cpp)  
+- [Ejemplo 7](prueba7.cpp)  
+- [Ejemplo 8](prueba8.cpp)  
+- [Ejemplo 9](prueba9.cpp)  
+- [Ejemplo 10](prueba10.cpp)  
