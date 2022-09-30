@@ -1,7 +1,5 @@
 %{
-    #include <stdio.h>
-    #include <stdlib.h>
-    #include <string.h>
+
     FILE *yyin;
 %}
 
@@ -10,10 +8,8 @@
 
 DIGIT           [0-9]
 CHAR_LETTER     [a-zA-Z]
-INIT_COMMENT    ["/*"]
-END_COMMENT     ["*/"]
-COMMENT         ["//"]
-DASH            [-_]
+COMMENT         "//"([^\n]*\")
+UNDERSCORE      ["_"]
 CHAR_COMMA      [","]
 CHAR_POINT      ["."]
 CHAR_COLON      [":"]
@@ -23,7 +19,6 @@ R_SHIFT         ">>"
 CONST_INT     (-?[1-9]{0,4})|0
 CONST_FLOAT   {DIGIT}{0,8}{CHAR_POINT}{DIGIT}{1,8}
 STRING  \"[^\n"]*\"
-
 OP_PLUS1    "++"
 OP_SUM      "+"
 OP_SUB      "-"
@@ -51,6 +46,7 @@ LIBRARY         (<{CHAR_LETTER}+({CHAR_POINT}|{CHAR_LETTER}+){CHAR_LETTER}+>)
 
 
 COUT        "cout"
+CIN         "cin"
 IF          "if"
 WHILE       "while"
 INTEGER     "int"
@@ -73,13 +69,15 @@ SWITCH      "switch"
 CASE        "case"
 BREAK       "break"
 
-ID            {CHAR_LETTER}({CHAR_LETTER}|{DIGIT}|{DASH})*
+ID            ({CHAR_LETTER}|{UNDERSCORE})({CHAR_LETTER}|{DIGIT}|{UNDERSCORE})*
 
 %%
 
+{COMMENT}           {printf("\nEsto es un comentario (%s)",yytext);}
 {END_SENTENCE}        {printf("\nEND_SENTENCE(%s)",yytext);}
 {LIBRARY}           {printf("\nEsto es una libreria (%s)",yytext);}
 {PPACCESS}          {printf("\nINCLUDE (%s)",yytext);}
+
 
 {OP_PLUS1}          {printf("\nOP_PLUS1 (%s)",yytext);}
 {OP_SUM}            {printf("\nOP_SUM (%s)",yytext);}
@@ -108,6 +106,7 @@ ID            {CHAR_LETTER}({CHAR_LETTER}|{DIGIT}|{DASH})*
 
 
 
+
 {BRACKET_OPEN}      {printf("\nBRACKET_OPEN (%s)",yytext);}
 {BRACKET_CLOSE}     {printf("\nBRACKET_CLOSE (%s)",yytext);}
 {PARENTHESIS_O}     {printf("\nPARENTHESIS_O (%s)",yytext);}
@@ -117,6 +116,7 @@ ID            {CHAR_LETTER}({CHAR_LETTER}|{DIGIT}|{DASH})*
 {USING}             {printf("\nPalabra Reservada USING (%s)",yytext);}
 {NAMESPACE}         {printf("\nPalabra Reservada NAMESPACE (%s)",yytext);}
 {COUT}              {printf("\nPalabra Reservada COUT (%s)",yytext);}
+{CIN}               {printf("\nPalabra Reservada CIN (%s)",yytext);}
 {IF}                {printf("\nPalabra Reservada IF (%s)",yytext);}
 {WHILE}             {printf("\nPalabra Reservada WHILE (%s)",yytext);}
 {INTEGER}           {printf("\nPalabra Reservada INTEGER (%s)",yytext);}

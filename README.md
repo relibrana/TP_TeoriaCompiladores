@@ -1,18 +1,23 @@
 # TP_TeoriaCompiladores
 ## 1. Describir el lenguaje de programación a utilizar, en caso de ser un lenguaje comercial, describir el alcance del mismo, es decir el subconjunto
-El lenguaje de programación que se va a utilizar en el presente trabajo es C++. 
+Para el presente trabajo se va a realizar un analizador léxico y sintáctico para el Lenguaje de Programación C++. Este es un lenguaje bastante amplio: cuenta con 32 palabras claves heredadas de C más 31 palabras claves del mismo, tiene la Librería Estándar C++ que cuenta con 32 ficheros, entre otras cosas. 
+Por simplicidad y poder poner en practica lo aprendido en clase se ha decidido tener como referencia algunos ejercicios realizados en el curso de "Programación 1". Por lo que el alcance de nuestros analizadores sería el siguiente:
+* Se tomara en cuenta el fichero < iostream > para el reconocimiento y lectura de sus objetos (ej. cout, cin). Se utiliza para entrada y salida de objetos.
+* Se consideraran 14 palabras claves de C y 4 de C++ para los tokens.
 
 ## 2. Describir los tokens y ejemplos de lexemas
-A continuación se van a presentar los tokens utilizados en el Analizador Léxico. Cabe resaltar que este sirve para analizar programas de nivel tipo principiante (Programación 1).
+A continuación se van a presentar los tokens utilizados en el Analizador Léxico. Cabe resaltar que este sirve para analizar programas de nivel tipo principiante.
+
 ### Identificador
 | token     | descripción                                           | lexema        |
 |-----------|-------------------------------------------------------|---------------|
 | ID        | Una letra seguida de una letra, un número o un guión  | a, cont, aux_ |
 
-### Palabras reservadas y parte de alguna librería o clase
+### Palabras reservadas y parte de el fichero < iostream >
 | token     | descripción                                        | lexema      |
 |-----------|----------------------------------------------------|-------------|
 | COUT      | Caracteres 'c','o','u','t'                         | _cout_      |
+| CIN       | Caracteres 'c','i','n'                             | _cout_      |
 | IF        | Caracteres 'i','f'                                 | _if_        |
 | WHILE     | Caracteres 'w','h','i','l','e'                     | _while_     |
 | INTEGER   | Caracteres 'i','n','t'                             | _int_       |
@@ -60,7 +65,7 @@ A continuación se van a presentar los tokens utilizados en el Analizador Léxic
 | OP_AND     | &&     |
 | OP_OR      | ||     |
 
-### Ordenar código
+### Código
 | token          | lexema |
 |----------------|--------|
 | BRACKET_OPEN   | {      |
@@ -68,11 +73,20 @@ A continuación se van a presentar los tokens utilizados en el Analizador Léxic
 | PARENTHESIS_O  | (      |
 | PARENTHESIS_C  | )      |
 | END_SENTENCE   | ;      |
+| BRACKET_OPEN   | {      |
+| BRACKET_CLOSE  | }      |
+| COMMENT        | //     |
+| UNDERSCORE     | _      |
+| CHAR_COMMA     | ,      |
+| CHAR_POINT     | .      |
+| CHAR_COLON     | :      |
+| L_SHIFT        | <<     |
+| R_SHIFT        | >>     |
 
 ### Librerias
 | token     | descripción                | lexema                              |
 |-----------|----------------------------|-------------------------------------|
-| LIBRARY   | Librerias incluidas en C++ | <iostream>, <math.h>, <conio.h>     |
+| LIBRARY   | Librerias incluidas en C++ | < iostream >, <math.h>, <conio.h>     |
 
 ## 3. Implementar el analizador léxico usando Flex
 [Analizador Lexico](AnalizadorLexico.l)
