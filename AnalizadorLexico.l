@@ -2,12 +2,12 @@
 enum Token{
   
     DIGIT, CHAR_LETTER, UNDERSCORE, CHAR_POINT, CHAR_COLON,CHAR_COMMA, 
-    L_SHIFT,R_SHIFT, CONST_INT,CONST_FLOAT,STRING,OP_PLUS1,OP_SUM,OP_SUB,
+    L_SHIFT,R_SHIFT, CONST_INT,CONST_FLOAT,STRING,OP_PLUS1,OP_SUM,OP_SUB, OP_SUB1
     OP_MULT, OP_DIV, OP_EQ, OP_HIGH, OP_LOW,OP_HIGHEQ, OP_LOWEQ, OP_COMP_EQ,
     OP_DENIAL,OP_DIF,OP_RES,OP_AND,OP_OR,BRACKET_OPEN,BRACKET_CLOSE,PARENTHESIS_O,
     PARENTHESIS_C,END_SENTENCE,LIBRARY,COUT,CIN,IF,WHILE,INTEGER,FLOAT,
     END_LINE,RETURN,USING,NAMESPACE,PPACCESS,BOOL,CHAR,DO,ELSE,FOR,NEW,SHORT,
-    STRUCT,VOID,SWITCH,CASE,BREAK,ID
+    STRUCT,VOID,SWITCH,CASE,BREAK,ID, CONTINUE
 };
     FILE *yyin;
 %}
@@ -40,6 +40,7 @@ ID            ({CHAR_LETTER}|{UNDERSCORE})({CHAR_LETTER}|{DIGIT}|{UNDERSCORE})*
 
 
 "++"       {return OP_PLUS1;}
+"--"       {return OP_SUB1;}
 "+"        {return OP_SUM;}
 "-"        {return OP_SUB ;}
 "*"        {return OP_MULT;}
@@ -48,7 +49,7 @@ ID            ({CHAR_LETTER}|{UNDERSCORE})({CHAR_LETTER}|{DIGIT}|{UNDERSCORE})*
 ">"        {return OP_HIGH;}
 "<"        {return OP_LOW ;}
 ">="       {return OP_HIGHEQ ;}
-">="       {return OP_LOWEQ;}
+"<="       {return OP_LOWEQ;}
 "=="       {return OP_COMP_EQ ;}
 "!"        {return OP_DENIAL;}
 "!="       {return OP_DIF;}
@@ -95,6 +96,7 @@ ID            ({CHAR_LETTER}|{UNDERSCORE})({CHAR_LETTER}|{DIGIT}|{UNDERSCORE})*
 "switch"          {return SWITCH;}
 "case"            {return CASE;}
 "break"           {return BREAK;}
+"continue"        {return CONTINUE;}
 
 
 {ID}              {return ID;}
