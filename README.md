@@ -4,6 +4,7 @@ Para el presente trabajo se va a realizar un analizador léxico y sintáctico pa
 Por simplicidad y poder poner en practica lo aprendido en clase se ha decidido tener como referencia algunos ejercicios realizados en el curso de "Programación 1". Por lo que el alcance de nuestros analizadores sería el siguiente:
 * Se tomara en cuenta el fichero < iostream > para el reconocimiento y lectura de sus objetos (ej. cout, cin). Se utiliza para entrada y salida de objetos.
 * Se consideraran 14 palabras claves de C y 4 de C++ para los tokens.
+* Se tendran presente las operaciones arítmeticos simples como la suma (+), resta (-), multiplicación (*), división (/) e incremento (--), operadores relacionales como mayor (>), menor (<), menor o igual (<=), mayor o igual (>=), igual (==) y diferente (!=) y operadores lógicos como AND (&&) y OR (||).
 
 ## 2. Describir los tokens y ejemplos de lexemas
 A continuación se van a presentar los tokens utilizados en el Analizador Léxico. Cabe resaltar que este sirve para analizar programas de nivel tipo principiante.
@@ -89,11 +90,13 @@ A continuación se van a presentar los tokens utilizados en el Analizador Léxic
 | LIBRARY   | Librerias incluidas en C++ | < iostream >, <math.h>, <conio.h>     |
 
 ## 3. Implementar el analizador léxico usando Flex
-[Analizador Lexico](AnalizadorLexico.l)
+[Analizador Léxico](AnalizadorLexico.l)
 
 ## 4. Describir la gramática libre de contexto del lenguaje seleccionado.
+Con nuestra gramática libre de contexto se puede declarar el tipo de variable (type), tenemos las condicionales (if_statement), los loops (for_statement, while_statement) y las diversas expresiones que se pueden dar con los tokens existentes. También usamos el ID para la creación de variables y nombres. Finalmente, se tiene la asignación de valores a una variable (assigment).
 
 ## 5. Implementar el analizador sintáctico
+[Analizador Sintáctico](AnalizadorSintactico.y)
 
 ## 6. Proporcionar por lo menos 10 ejemplos de programas válidos 
 - [Ejemplo 1](prueba1.cpp)  
