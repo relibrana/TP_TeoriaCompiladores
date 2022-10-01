@@ -99,4 +99,4 @@ Con nuestra gramática libre de contexto se puede declarar el tipo de variable (
 [Analizador Sintáctico](AnalizadorSintactico.y)
 
 ## 6. Proporcionar por lo menos 10 ejemplos de programas válidos 
-- [Ejemplos] (ejemplos)
+[Ejemplos](ejemplos)
